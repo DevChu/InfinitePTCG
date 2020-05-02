@@ -1,0 +1,51 @@
+.icon-item-info{
+    width: 18px;
+    margin: 2px;
+}
+.decklistName{
+    color: blue;
+    font-size: 20px;
+}
+.deckversion{
+    color: grey;
+    font-size: 14px;
+    font-style: italic;
+    padding: 2px;
+}
+.authorname{
+    font-size: 16px;
+    color: green;
+    font-style: italic;
+    padding: 2px;
+}
+.publishdate {
+    margin: 2px;
+    padding-top: 2px;
+    font-style: italic;
+    font-size: 14px;
+}
+.decklist-item-container{
+    margin: 20px 0;
+    width: 100%;
+}
+.td-decklistname{
+    padding-top: 20px;
+}
+.td-info-item{
+    padding-top: 20px;
+}
+.td-author-deckversion{
+    padding-top: 10px;
+}
+.td-publishdate{
+    padding-top: 10px;
+}
+.pageindex-container{
+    align-items: center;
+    /* border: 1px solid; */
+    padding: 5px auto;
+}
+.pagination{
+    /* border: 1px solid; */
+    margin: 10px auto;
+}
