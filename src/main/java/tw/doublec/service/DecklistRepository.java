@@ -2,7 +2,7 @@ package tw.doublec.service;
 
 import java.util.List;
 
-import com.ptcg.db.vo.User;
+import tw.doublec.dto.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

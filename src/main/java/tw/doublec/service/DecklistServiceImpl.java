@@ -3,8 +3,8 @@ package tw.doublec.service;
 import java.util.List;
 import java.util.Objects;
 
-import com.ptcg.db.vo.DatabaseSequence;
-import com.ptcg.db.vo.User;
+import tw.doublec.dto.DatabaseSequence;
+import tw.doublec.dto.User;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;

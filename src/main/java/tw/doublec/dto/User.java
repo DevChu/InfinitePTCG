@@ -16,7 +16,7 @@ public class User {
 	private String name;
 	@Field("last_update")
 	private Date lastUpdate;
-	private List<Deck> deckList;
+	private List<Deck> decklist;
 	public String getPassword() {
 		return password;
 	}
@@ -42,10 +42,10 @@ public class User {
 		this.lastUpdate = lastUpdate;
 	}
 	public List<Deck> getDeckList() {
-		return deckList;
+		return decklist;
 	}
 	public void setDeckList(List<Deck> decklist) {
-		this.deckList = decklist;
+		this.decklist = decklist;
 	}
 
 	public String getAccount() {

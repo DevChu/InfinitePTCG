@@ -17,6 +17,7 @@ import tw.doublec.service.DecklistService;
 public class IndexController {
 	@Autowired
 	DecklistService decklistService;
+	
 	@GetMapping(value="/decklist")
 	public ResponseEntity<?> allDeckList(){
 //		List<User> users = decklistService.findAll();
@@ -25,4 +26,5 @@ public class IndexController {
 		result.put("decklist", users);
 		return ResponseEntity.ok(result);
 	}
+
 }
