@@ -1,62 +1,64 @@
 import React from 'react'
-import { Tab, Row, Col, ListGroup } from 'react-bootstrap'
-import { DecklistItem } from './decklist'
+import { Route } from 'react-router-dom'
+import { Row, Col, ListGroup } from 'react-bootstrap'
+import { Decklist, DeckInfo } from './decklist'
 import './index.css'
+import pokemonCard from '../assets/data/PokemonCard.json'
+import trainerCard from '../assets/data/TrainerCard.json'
 
 export default class extends React.Component {
     constructor() {
         super()
         this.state = {
-            listGroupItem:[
+            listGroupItem: [
                 {
-                    title:'最受歡迎',
-                    link:'#link1'
+                    title: '最受歡迎',
+                    link: 'link1'
                 },
                 {
-                    title:'最新發表',
-                    link:'#link2'
+                    title: '最新發表',
+                    link: 'link2'
                 },
                 {
-                    title:'比賽牌表',
-                    link:'#link3'
+                    title: '比賽牌表',
+                    link: 'link3'
                 },
                 {
-                    title:'熱度討論',
-                    link:'#link4'
+                    title: '熱度討論',
+                    link: 'link4'
                 },
                 {
-                    title:'我的最愛',
-                    link:'#link5'
+                    title: '我的最愛',
+                    link: 'link5'
                 },
                 {
-                    title:'我的牌組',
-                    link:'#link6'
+                    title: '我的牌組',
+                    link: 'link6'
                 },
             ],
+            decklists: [
+                pokemonCard, trainerCard
+            ],
+            hoverCard: {}
         }
+        this.handleMouseEnter = this.handleMouseEnter.bind(this)
+    }
+    handleMouseEnter(e) {
+        console.log(e.currentTarget.innerText)
+        console.log(this.state.decklists[1].name)
+        // const prevState = this.state.decklists
+        this.state.decklists.map((card, index) => {
+            if (card.name === e.currentTarget.innerText) {
+                this.setState({ hoverCard: card })
+            }
+        })
     }
 
     render() {
         return (
-            <div className='container mwidth' style={{ marginTop: '100px' }}>
-                <Row>
-                    <Col sm={3}>
-                        <ListGroup style={{paddingTop:'20px'}}>
-                            {
-                                this.state.listGroupItem.map((item, index)=>{
-                                    return(
-                                        <ListGroup.Item key={index} style={{height:'60px',padding:'auto',fontSize:'20px'}} action href={`#${item.link}`}>
-                                            {item.title}
-                                        </ListGroup.Item>
-                                    )
-                                })
-                            }
-                        </ListGroup>
-                    </Col>
-                    <Col sm={9}>
-                        <DecklistItem />
-                    </Col>
-                </Row>
+            <div>
+                <Route path='/decklist/popular' component={() => <Decklist listGroupItem={this.state.listGroupItem} />} />
+                <Route path='/decklist/info' component={() => <DeckInfo handleMouseEnter={this.handleMouseEnter} hoverCard={this.state.hoverCard} cards={this.state.decklists} />} />
             </div>
         )
     }

@@ -22,7 +22,7 @@
     margin: 2px;
     padding-top: 2px;
     font-style: italic;
-    font-size: 14px;
+    font-size: 16px;
 }
 .decklist-item-container{
     margin: 20px 0;
@@ -48,4 +48,57 @@
 .pagination{
     /* border: 1px solid; */
     margin: 10px auto;
+}
+
+/*
+
+Deck info
+
+*/
+
+.decklist-name {
+    border-bottom: 1px solid lightgray;
+}
+.nav-item-size {
+    font-size: 20px;
+}
+.deckinfo-nav {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/*
+
+Deck Content
+
+*/
+.deck-pokemon {
+    font-size: 24px;
+}
+
+/*
+
+Deck Description
+
+*/
+.deck-description {
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+/*
+
+Deck Comment
+
+*/
+.comment-date {
+    color: lightgray;
+    float: right;
+}
+.comment-text {
+    clear: right;
+    font-size: 18px;
+}
+.comment-text p {
+    margin: 0 0 10px;
 }

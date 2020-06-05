@@ -1,0 +1,73 @@
+{
+	"deck":{
+		"createTime":"2000/02/02",
+		"lastUpdate":"2000/03/06",
+		"author":{
+			"name":"James Chu",
+			"link":""
+		},
+		"cards":{
+			"pokemonCard":[
+				{
+					"quantity":3,
+					"name":"卡璞‧蝶蝶",
+					"imageLink":""
+				},
+				{
+					"quantity":4,
+					"name":"基拉祈",
+					"imageLink":""
+				}
+			],
+			"trainerCard":[
+				{
+					"quantity":4,
+					"name":"古茲馬&哈拉",
+					"imageLink":""
+				},
+				{
+					"quantity":3,
+					"name":"古茲馬",
+					"imageLink":""
+				}
+			],
+			"energyCard":[
+				{
+					"quantity":12,
+					"name":"基礎惡能量",
+					"imageLink":""
+				},
+				{
+					"quantity":4,
+					"name":"彩虹能量",
+					"imageLink":""
+				}
+			]
+		},
+		"pack":[],
+		"imageLink":"",
+		"description":{},
+		"comments":[
+			{
+				"author":{
+					"name":"James Chu",
+					"link":""
+				},
+				"datetime":"2000/02/03 15:00",
+				"like":20,
+				"content":{}
+			},
+			{
+				"author":{
+					"name":"Lec",
+					"link":""
+				},
+				"datetime":"2000/02/03 15:02",
+				"like":2,
+				"content":{}
+			}
+		],
+		"like":23,
+		"star":23
+	}
+}
