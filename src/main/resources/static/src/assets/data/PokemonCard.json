@@ -2,10 +2,11 @@
   "name":"卡璞·蝶蝶",
   "type":"Pokemon",
   "release_date":"2019/10/09",
-  "collector_card_number":"061/058",
+  "series":"AS1C",
+  "collector_card_number":"061/158",
   "image_link":"/AS6a_200408_0055.jpg",
   "detail":{
-    "stage":0,
+    "stage":"basic",
     "hp":170,
     "elemental_type":"psychic",
     "ability":{
