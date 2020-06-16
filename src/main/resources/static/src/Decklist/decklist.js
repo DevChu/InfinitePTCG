@@ -13,57 +13,72 @@ Decklist
 
 */
 
-const InfoItem = () => {
+const InfoItem = (props) => {
     return (
         <div style={{ width: '100%', textAlign: 'center' }}>
-            <Icon.HeartFill color='red' size={20} />&nbsp;<span style={{ margin: '2px', paddingTop: '3px', color: `grey` }}>23</span>
-            <Icon.StarFill color='yellow' size={20} />&nbsp;<span style={{ margin: '2px', paddingTop: '3px', color: `grey` }}>23</span>
-            <Icon.ChatSquareFill color='green' size={20} />&nbsp;<span style={{ margin: '2px', paddingTop: '3px', color: `grey` }}>23</span>
+            <Icon.HeartFill color='red' size={20} />&nbsp;<span style={{ margin: '2px', paddingTop: '3px', color: `grey` }}>{props.like}</span>
+            <Icon.StarFill color='yellow' size={20} />&nbsp;<span style={{ margin: '2px', paddingTop: '3px', color: `grey` }}>{props.star}</span>
+            <Icon.ChatSquareFill color='green' size={20} />&nbsp;<span style={{ margin: '2px', paddingTop: '3px', color: `grey` }}>{props.comment}</span>
         </div>
     )
 }
-const DecklistName = () => {
+const DecklistName = (props) => {
     return (
         <div>
-            <a href='/decks/tournaments'><span className='decklistName'>沙奈仙子牌組</span></a>
+            <a href={`/decklist/info/${props.deckId}`}><span className='decklistName'>{props.deckName}</span></a>
         </div>
     )
 }
-const DeckPublishDate = () => {
+const DeckPublishDate = (props) => {
     return (
         <div style={{ width: '100%', textAlign: 'center' }}>
             {/* <img src={calendar} alt='calendar' className='icon-item-info' /> */}
             <Icon.CalendarFill color='grey' size={20} />&nbsp;
-            <span className='publishdate'>2019 Oct 09</span>
+            <span className='publishdate'>{props.publicDate}</span>
         </div>
     )
 }
-const AuthorAndDeckVersion = () => {
+const AuthorAndDeckVersion = (props) => {
     return (
         <div>
             <img src={author} alt='author' className='icon-item-info' />
-            <small className='authorname'>James Chu</small>
+            <small className='authorname'>{props.author}</small>
             <img src={version} alt='version' className='icon-item-info' />
-            <strong className='deckversion'>SM1 - SM4</strong>
+            <strong className='deckversion'>{props.twstd}</strong>
         </div>
     )
 }
 
-const DecklistItem = () => {
-    let array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const DecklistItem = (props) => {
     return (
         <div className='decklist-item-container'>
-            {array.map((item, i) => {
+            {props.decklists.map((deck, i) => {
                 return (
                     <div key={i} style={{ width: '100%' }}>
                         <hr />
                         <Row>
-                            <Col sm={9} className='td-decklistname'><DecklistName /></Col>
-                            <Col sm={3} className='td-info-item'><InfoItem /></Col>
+                            <Col sm={9} className='td-decklistname'>
+                                <DecklistName
+                                    deckName={deck.deckName}
+                                    deckId={deck.deckId}
+                                />
+                            </Col>
+                            <Col sm={3} className='td-info-item'>
+                                <InfoItem like={deck.like}
+                                    star={deck.star}
+                                    comment={deck.comment}
+                                />
+                            </Col>
                         </Row>
                         <Row>
-                            <Col sm={9} className='td-author-deckversion'><AuthorAndDeckVersion /></Col>
-                            <Col sm={3} className='td-publishdate'><DeckPublishDate /></Col>
+                            <Col sm={9} className='td-author-deckversion'>
+                                <AuthorAndDeckVersion
+                                    author={deck.author}
+                                    account={deck.account}
+                                    twstd={deck.twstd}
+                                />
+                            </Col>
+                            <Col sm={3} className='td-publishdate'><DeckPublishDate publicDate={deck.publicDate} /></Col>
                         </Row>
                     </div>
                 )
@@ -99,7 +114,7 @@ const Decklist = (props) => {
                         {
                             props.listGroupItem.map((item, index) => {
                                 return (
-                                    <ListGroup.Item key={index} style={{ height: '60px', padding: 'auto', fontSize: '20px' }} action href={`#${item.link}`}>
+                                    <ListGroup.Item key={index} style={{ height: '60px', padding: 'auto', fontSize: '20px' }} action href={`/decklist${item.link}`}>
                                         <strong>{item.title}</strong>
                                     </ListGroup.Item>
                                 )
@@ -108,7 +123,7 @@ const Decklist = (props) => {
                     </ListGroup>
                 </Col>
                 <Col sm={9}>
-                    <DecklistItem />
+                    <DecklistItem decklists={props.decklists} />
                 </Col>
             </Row>
         </div>
@@ -274,11 +289,11 @@ const DeckInfo = (props) => {
 }
 const CardOverlay = (props) => (
     <OverlayTrigger trigger={['hover', 'hover']} placement='right' overlay={
-        <Popover id='popover-basic' style={{maxWidth: '450px'}}>
+        <Popover id='popover-basic' style={{ maxWidth: '450px' }}>
             {/* <Popover.Title as='h3'>{props.hoverCard.name}</Popover.Title> */}
             <Popover.Content>
                 {/* <img src={require(`${props.hoverCard.image_link}`)} alt='1' /> */}
-                <img src={props.hoverCard.image_link === undefined ? `../assets/images/26841123_736038116586568_5935735292493329942_o.jpg` : require(`../assets/images${props.hoverCard.image_link}`)} width={'100%'} alt="Background"/>
+                <img src={props.hoverCard.image_link === undefined ? `../assets/images/26841123_736038116586568_5935735292493329942_o.jpg` : require(`../assets/images${props.hoverCard.image_link}`)} width={'100%'} alt="card" />
             </Popover.Content>
         </Popover>}
     >
@@ -286,13 +301,13 @@ const CardOverlay = (props) => (
     </OverlayTrigger>
 )
 
-const popover = (
-    <Popover id='popover-basic'>
-        <Popover.Title as='h3'>百變怪</Popover.Title>
-        <Popover.Content>
-            這是一張 <strong>令人驚艷ㄉ</strong> 百變怪哦哦哦哦哦
-      </Popover.Content>
-    </Popover>
-)
+// const popover = (
+//     <Popover id='popover-basic'>
+//         <Popover.Title as='h3'>百變怪</Popover.Title>
+//         <Popover.Content>
+//             這是一張 <strong>令人驚艷ㄉ</strong> 百變怪哦哦哦哦哦
+//       </Popover.Content>
+//     </Popover>
+// )
 
 export { Decklist, DeckInfo }
