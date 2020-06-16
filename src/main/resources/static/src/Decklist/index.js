@@ -5,6 +5,7 @@ import { Decklist, DeckInfo } from './decklist'
 import './index.css'
 import pokemonCard from '../assets/data/PokemonCard.json'
 import trainerCard from '../assets/data/TrainerCard.json'
+import decklist from '../assets/data/decklists.json'
 
 export default class extends React.Component {
     constructor() {
@@ -13,30 +14,31 @@ export default class extends React.Component {
             listGroupItem: [
                 {
                     title: '最受歡迎',
-                    link: 'link1'
+                    link: '/popular'
                 },
                 {
                     title: '最新發表',
-                    link: 'link2'
+                    link: '/latest'
                 },
                 {
                     title: '比賽牌表',
-                    link: 'link3'
+                    link: '/tournament'
                 },
                 {
                     title: '熱度討論',
-                    link: 'link4'
+                    link: '/hottopics'
                 },
                 {
                     title: '我的最愛',
-                    link: 'link5'
+                    link: '/favorites'
                 },
                 {
                     title: '我的牌組',
-                    link: 'link6'
+                    link: '/mine'
                 },
             ],
-            decklists: [
+            decklists: decklist,
+            deckCards: [
                 pokemonCard, trainerCard
             ],
             hoverCard: {}
@@ -57,8 +59,8 @@ export default class extends React.Component {
     render() {
         return (
             <div>
-                <Route path='/decklist/popular' component={() => <Decklist listGroupItem={this.state.listGroupItem} />} />
-                <Route path='/decklist/info' component={() => <DeckInfo handleMouseEnter={this.handleMouseEnter} hoverCard={this.state.hoverCard} cards={this.state.decklists} />} />
+                <Route path='/decklist' component={() => <Decklist listGroupItem={this.state.listGroupItem} decklists={this.state.decklists} />} />
+                <Route path='/decklist/info' component={() => <DeckInfo handleMouseEnter={this.handleMouseEnter} hoverCard={this.state.hoverCard} cards={this.state.deckCards} />} />
             </div>
         )
     }
